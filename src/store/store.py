@@ -31,6 +31,7 @@ def create_store(initial_state, reducers, middleware: Middleware):
 
 def apply_middleware(middlewares: List[Middleware]):
     def with_store(store):
+        # todo: allow middleware to call store.dispatch to make action travel the whole chain
         dispatch = store.dispatch
         for middleware in middlewares:
             dispatch = middleware(store)(dispatch)
