@@ -1,6 +1,8 @@
 import sched
 import time
 
+from rx.scheduler import ThreadPoolScheduler
+
 from src.actions.action_types import MEASURE_TEMPERATURE
 from src.epics.epics import temperature_epic, humidity_epic
 from src.reducers.reducers import temperature, humidity
@@ -9,6 +11,7 @@ from src.redux.store.action import Action
 from src.redux.store.store import create_store, Store, apply_middleware
 
 if __name__ == '__main__':
+    state_executor = ThreadPoolScheduler(1)
     store: Store = create_store(
         {
             'temperature': 60,
@@ -17,7 +20,7 @@ if __name__ == '__main__':
         [temperature, humidity],
         apply_middleware([
             logging_middleware(),
-            epic_middleware([temperature_epic, humidity_epic])
+            epic_middleware([temperature_epic, humidity_epic], state_executor)
         ]))
     scheduler = sched.scheduler(time.time, time.sleep)
     while True:
