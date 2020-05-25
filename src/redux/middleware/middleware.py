@@ -3,8 +3,8 @@ from typing import List
 import rx
 
 from src.epics.types import Epic
-from src.store.action import Action
-from src.store.store import Store, Dispatch
+from src.redux.store.action import Action
+from src.redux.store.store import Store, Dispatch
 
 
 def epic_middleware(epics: List[Epic]):

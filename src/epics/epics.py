@@ -1,7 +1,7 @@
 from rx import operators as ops, Observable
 
 from src.actions.action_types import MEASURE_TEMPERATURE, SET_TEMPERATURE, MEASURE_HUMIDITY, SET_HUMIDITY
-from src.store.action import Action
+from src.redux.store.action import Action
 
 
 def temperature_epic(action: Observable) -> Observable:

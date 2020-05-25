@@ -1,6 +1,7 @@
+import copy
 from typing import Callable, List
 
-from src.store.action import Action
+from src.redux.store.action import Action
 
 
 class Store:
@@ -9,12 +10,14 @@ class Store:
         self.__reducers = reducers
 
     def dispatch(self, action):
+        state_copy = copy.deepcopy(self.__state)
         for reducer in self.__reducers:
             name = reducer.__name__
-            self.__state[name] = reducer(action, self.__state[name])
+            state_copy[name] = reducer(action, state_copy[name])
+        self.__state = state_copy
 
     def get_state(self):
-        return self.__state
+        return copy.deepcopy(self.__state)
 
 
 ActionProcessor = Callable[[Action], Action]
@@ -31,7 +34,6 @@ def create_store(initial_state, reducers, middleware):
 
 def apply_middleware(middlewares: List[Middleware]):
     def with_store(store):
-        # todo: allow middleware to call store.dispatch to make action travel the whole chain
         dispatch = store.dispatch
         for middleware in middlewares:
             dispatch = middleware(store)(dispatch)
