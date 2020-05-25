@@ -1,29 +1,30 @@
+from typing import List
+
+import rx
+
+from src.epics.types import Epic
 from src.store.action import Action
-from src.store.store import Middleware, Store, Dispatcher, Dispatch, ActionProcessor
+from src.store.store import Store, Dispatch
 
 
-def epic_middleware(epics) -> Middleware:
-    def with_store(store: Store) -> Dispatcher:
-        def with_dispatch(next_dispatch: Dispatch) -> ActionProcessor:
-            def action_processor(action: Action) -> Action:
-                side_effects = []
-                for epic in epics:
-                    side_effects.append(epic(store.dispatch)(action))
+def epic_middleware(epics: List[Epic]):
+    def s(store):
+        def n(next_dispatch):
+            def a(action):
                 next_dispatch(action)
-                for side_effect in side_effects:
-                    side_effect()
-                return action
+                for epic in epics:
+                    epic(rx.of(action)).subscribe(lambda act: store.dispatch(act))
 
-            return action_processor
+            return a
 
-        return with_dispatch
+        return n
 
-    return with_store
+    return s
 
 
-def logging_middleware() -> Middleware:
-    def with_store(store: Store) -> Dispatcher:
-        def with_dispatch(next_dispatch: Dispatch) -> ActionProcessor:
+def logging_middleware():
+    def with_store(store: Store):
+        def with_dispatch(next_dispatch: Dispatch):
             def action_processor(action: Action) -> Action:
                 print('Dispatching ' + action.type)
                 print('Previous state: ', store.get_state())

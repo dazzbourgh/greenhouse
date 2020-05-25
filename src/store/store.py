@@ -23,7 +23,7 @@ Dispatcher = Callable[[Dispatch], ActionProcessor]
 Middleware = Callable[[Store], Dispatcher]
 
 
-def create_store(initial_state, reducers, middleware: Middleware):
+def create_store(initial_state, reducers, middleware):
     store = Store(initial_state, reducers)
     middleware(store)
     return store
