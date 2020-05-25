@@ -1,4 +1,7 @@
-from src.actions.action_types import MEASURE_TEMPERATURE, MEASURE_HUMIDITY
+import sched
+import time
+
+from src.actions.action_types import MEASURE_TEMPERATURE
 from src.epics.epics import temperature_epic, humidity_epic
 from src.reducers.reducers import temperature, humidity
 from src.redux.middleware.middleware import logging_middleware, epic_middleware
@@ -16,5 +19,7 @@ if __name__ == '__main__':
             logging_middleware(),
             epic_middleware([temperature_epic, humidity_epic])
         ]))
-    store.dispatch(Action(MEASURE_TEMPERATURE))
-    store.dispatch(Action(MEASURE_HUMIDITY))
+    scheduler = sched.scheduler(time.time, time.sleep)
+    while True:
+        scheduler.enter(5, 1, lambda: store.dispatch(Action(MEASURE_TEMPERATURE)))
+        scheduler.run()
