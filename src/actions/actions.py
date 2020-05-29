@@ -1,5 +1,5 @@
 from src.actions.action_types import SET_TEMPERATURE, SET_HUMIDITY, SET_LIGHTING, SET_CO2, MEASURE_TEMPERATURE, \
-    MEASURE_CO2, MEASURE_HUMIDITY
+    MEASURE_CO2, MEASURE_HUMIDITY, FLIP_SCENARIO
 from src.redux.store.action import Action
 
 
@@ -53,3 +53,7 @@ def set_co2(co2):
             'co2': co2
         }
     )
+
+
+def flip_scenario():
+    return Action(FLIP_SCENARIO)

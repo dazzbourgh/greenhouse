@@ -10,7 +10,7 @@ from src.redux.store.action import Action
 from src.redux.store.store import Store, Dispatch
 
 state_scheduler = ThreadPoolScheduler(1)
-optimal_thread_count = (multiprocessing.cpu_count() / 2).is_integer()
+optimal_thread_count = int(multiprocessing.cpu_count() / 2)
 
 
 def controller_middleware(controllers: List[Controller]):
