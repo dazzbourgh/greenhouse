@@ -4,10 +4,10 @@ from typing import List
 import rx
 from rx.scheduler import ThreadPoolScheduler
 
-from src.epics.types import Epic
-from src.hardware.controllers.controllers import Controller
-from src.redux.store.action import Action
-from src.redux.store.store import Store, Dispatch
+from epics import Epic
+from hardware.controllers import Controller
+from redux.store import Store, Action
+from redux.store.store import Dispatch
 
 state_scheduler = ThreadPoolScheduler(1)
 optimal_thread_count = int(multiprocessing.cpu_count() / 2)

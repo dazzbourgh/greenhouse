@@ -2,12 +2,13 @@ import asyncio
 
 from rx.scheduler import CurrentThreadScheduler
 
-from src.actions.actions import measure_temperature, measure_humidity, measure_co2, flip_scenario
-from src.epics.epics import temperature_epic, humidity_epic, co2_epic
-from src.hardware.controllers.controllers import temperature_controller
-from src.reducers.reducers import temperature, humidity, co2
-from src.redux.middleware.middleware import logging_middleware, epic_middleware, controller_middleware
-from src.redux.store.store import create_store, Store, apply_middleware
+from actions.actions import measure_temperature, measure_humidity, measure_co2, flip_scenario
+from epics import temperature_epic, humidity_epic, co2_epic
+from hardware.controllers import temperature_controller
+from reducers import humidity, temperature, co2
+from redux.middleware import logging_middleware, epic_middleware, controller_middleware
+from redux.store import Store, create_store
+from redux.store.store import apply_middleware
 
 if __name__ == '__main__':
     scheduler = CurrentThreadScheduler()

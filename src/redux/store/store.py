@@ -1,7 +1,7 @@
 import copy
 from typing import Callable, List
 
-from src.redux.store.action import Action
+from redux.store import Action
 
 
 class Store:

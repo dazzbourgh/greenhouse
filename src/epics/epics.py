@@ -1,10 +1,7 @@
 from rx import operators as ops, Observable
 
-from src.actions.action_types import MEASURE_TEMPERATURE, MEASURE_HUMIDITY, MEASURE_CO2
-from src.actions.actions import set_co2, set_humidity, set_temperature
-
-
 # todo: add actual implementations
+from actions import MEASURE_TEMPERATURE, set_temperature, MEASURE_HUMIDITY, set_humidity, MEASURE_CO2, set_co2
 
 
 def temperature_epic(action: Observable) -> Observable:

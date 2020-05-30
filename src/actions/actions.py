@@ -1,6 +1,6 @@
-from src.actions.action_types import SET_TEMPERATURE, SET_HUMIDITY, SET_LIGHTING, SET_CO2, MEASURE_TEMPERATURE, \
-    MEASURE_CO2, MEASURE_HUMIDITY, FLIP_SCENARIO
-from src.redux.store.action import Action
+from actions import MEASURE_TEMPERATURE, SET_TEMPERATURE, SET_LIGHTING, SET_HUMIDITY, SET_CO2, MEASURE_HUMIDITY, \
+    MEASURE_CO2, FLIP_SCENARIO
+from redux.store import Action
 
 
 def measure_temperature():

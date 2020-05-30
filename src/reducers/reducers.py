@@ -1,5 +1,5 @@
-from src.actions.action_types import SET_TEMPERATURE, SET_HUMIDITY, SET_CO2, SET_LIGHTING
-from src.redux.store.action import Action
+from actions import SET_TEMPERATURE, SET_HUMIDITY, SET_LIGHTING, SET_CO2
+from redux.store import Action
 
 
 def temperature(action: Action, state=70) -> int:

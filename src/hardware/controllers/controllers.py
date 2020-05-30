@@ -1,7 +1,7 @@
 from typing import Callable
 
-from src.actions.action_types import SET_TEMPERATURE
-from src.redux.store.action import Action
+from actions import SET_TEMPERATURE
+from redux.store import Action
 
 Controller = Callable[[Action], None]
 
