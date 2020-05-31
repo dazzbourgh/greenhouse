@@ -1,8 +1,6 @@
-import adafruit_dht
-import board
-
-dhtDevice = adafruit_dht.DHT22(board.D4)
+import Adafruit_DHT
 
 
 def get_temperature_from_sensor():
-    return dhtDevice.temperature
+    _, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.DHT22, 4)
+    return temperature

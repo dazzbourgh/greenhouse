@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9a3778a0b0f9f5682df6dee03467a5cc7a9931c773064a5faec2a8a3eca220c9"
+            "sha256": "38408653f4d5b45a245b595c0146607e482f83c40cdbca871e66de9bc62e37eb"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -16,50 +16,12 @@
         ]
     },
     "default": {
-        "adafruit-blinka": {
+        "adafruit-dht": {
             "hashes": [
-                "sha256:c8f2851bca02af2595f78ecb59322f61c2d094bc5377fd15d98904965f51c3ec"
-            ],
-            "version": "==5.0.1"
-        },
-        "adafruit-circuitpython-dht": {
-            "hashes": [
-                "sha256:eb56ea040c8becf58ebf8fba7e7b33c30745ff0b87a67c5240571439bc64cf92"
+                "sha256:e927f2232eff5335cb9d8a2cca6dcad4625e61f205b12e31ef04198ea6dec830"
             ],
             "index": "pypi",
-            "version": "==3.4.1"
-        },
-        "adafruit-platformdetect": {
-            "hashes": [
-                "sha256:dfa0cab86dd7682a9a2fbd1a7aa791e0bf3e38c95db24ee97e747c2d0dc29ae1"
-            ],
-            "version": "==2.13.1"
-        },
-        "adafruit-pureio": {
-            "hashes": [
-                "sha256:ebab172823f7249e02a644844a64e6dc2e4b3ded38ba42099068fd3e96623cfb"
-            ],
-            "version": "==1.1.5"
-        },
-        "pyftdi": {
-            "hashes": [
-                "sha256:02926258d5dfd28452a3d4d7c2f6d5bab722133b2885bde8b9e28bd2ccc095ca",
-                "sha256:6cacb8fe28491ee6d00b8d45e18f73ea539b31bcd785f5d8c80a60322297c007"
-            ],
-            "version": "==0.51.2"
-        },
-        "pyserial": {
-            "hashes": [
-                "sha256:6e2d401fdee0eab996cf734e67773a0143b932772ca8b42451440cfed942c627",
-                "sha256:e0770fadba80c31013896c7e6ef703f72e7834965954a78e71a3049488d4d7d8"
-            ],
-            "version": "==3.4"
-        },
-        "pyusb": {
-            "hashes": [
-                "sha256:4e9b72cc4a4205ca64fbf1f3fff39a335512166c151ad103e55c8223ac147362"
-            ],
-            "version": "==1.0.2"
+            "version": "==1.4.0"
         },
         "pyyaml": {
             "hashes": [
@@ -84,14 +46,6 @@
             ],
             "index": "pypi",
             "version": "==3.1.0"
-        },
-        "sysv-ipc": {
-            "hashes": [
-                "sha256:2b2b8491764845d06a9d5731ebe67f12fbe0c35967ac7f2bbe55ff24cb302405",
-                "sha256:8eff10dd17789ddf21b422ce46ae0f6420088902a88e4296cb805cf2fde8b4dc",
-                "sha256:a67fc5b7a3dd5fc9c50776de0c65a44eb776d29bb88364dedb1fb1149e53a1f1"
-            ],
-            "version": "==1.0.1"
         }
     },
     "develop": {}
