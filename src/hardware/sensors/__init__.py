@@ -1,0 +1,1 @@
+from hardware.sensors.temperature import get_temperature_from_sensor

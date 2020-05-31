@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 rx = "*"
 pyyaml = "*"
+adafruit-circuitpython-dht = "*"
 
 [requires]
 python_version = "3.8"
