@@ -3,8 +3,9 @@ import asyncio
 from rx.scheduler import CurrentThreadScheduler
 
 from actions.actions import measure_temperature, measure_humidity, measure_co2, flip_scenario
-from epics import temperature_epic, humidity_epic, co2_epic
+from epics import create_dht22_epic, co2_epic
 from hardware.controllers import temperature_controller
+from hardware.sensors import get_dht22_data
 from reducers import humidity, temperature, co2
 from redux.middleware import logging_middleware, epic_middleware, controller_middleware
 from redux.store import Store, create_store
@@ -23,7 +24,7 @@ if __name__ == '__main__':
         [temperature, humidity, co2],
         apply_middleware([
             logging_middleware(),
-            epic_middleware([temperature_epic, humidity_epic, co2_epic]),
+            epic_middleware([create_dht22_epic(lambda: get_dht22_data(4)), co2_epic]),
             controller_middleware([temperature_controller])
         ]))
 
