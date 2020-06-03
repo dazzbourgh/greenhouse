@@ -10,14 +10,20 @@ from reducers import humidity, temperature, co2
 from redux.middleware import logging_middleware, epic_middleware, controller_middleware
 from redux.store import Store, create_store
 from redux.store.store import apply_middleware
+from scenario import get_scenarios
 
 if __name__ == '__main__':
     scheduler = CurrentThreadScheduler()
+    scenarios = get_scenarios()
     initial_state = {
         'temperature': 60,
         'humidity': 10,
         'co2': 200,
-        'scenario': 'day'
+        'scenarios': {
+            'master': scenarios['master'],
+            'scenarios': scenarios['scenarios'],
+            'current': scenarios['master'][0]
+        }
     }
     store: Store = create_store(
         initial_state,

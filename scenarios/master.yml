@@ -1,0 +1,4 @@
+- name: day
+  length: 18h
+- name: night
+  length: 6h
