@@ -1,1 +1,4 @@
-from redux.middleware.middleware import controller_middleware, epic_middleware, logging_middleware, scenario_middleware
+from redux.middleware.epic_middleware import epic_middleware
+from redux.middleware.controller_middleware import controller_middleware
+from redux.middleware.logging_middleware import logging_middleware
+from redux.middleware.scenario_middleware import scenario_middleware
