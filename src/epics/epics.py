@@ -4,7 +4,8 @@ import rx
 from rx import operators as ops, Observable
 
 # todo: add actual implementations
-from actions import MEASURE_TEMPERATURE, set_temperature, MEASURE_HUMIDITY, MEASURE_CO2, set_co2, set_humidity
+from actions import MEASURE_TEMPERATURE, set_temperature, MEASURE_HUMIDITY, MEASURE_CO2, set_co2, set_humidity, \
+    FLIP_SCENARIO, measure_temperature, measure_humidity, measure_co2, set_lighting
 
 
 def create_dht22_epic(get_data) -> Callable[[Observable], Observable]:
@@ -22,4 +23,17 @@ def co2_epic(action: Observable) -> Observable:
     return action.pipe(
         ops.filter(lambda a: a.type == MEASURE_CO2),
         ops.map(lambda a: set_co2(1000))
+    )
+
+
+def flip_scenario_epic(action: Observable, state) -> Observable:
+    scenarios = state['scenarios']
+    current_scenario = scenarios['individual'][scenarios['current']]
+    return action.pipe(
+        ops.filter(lambda a: a.type == FLIP_SCENARIO),
+        ops.flat_map(
+            lambda _: rx.of(measure_temperature(),
+                            measure_humidity(),
+                            measure_co2(),
+                            set_lighting(current_scenario['lighting'])))
     )
