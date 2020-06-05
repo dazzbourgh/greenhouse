@@ -1,4 +1,4 @@
 - name: day
-  length: 18h
+  length: 2s
 - name: night
-  length: 6h
+  length: 1s

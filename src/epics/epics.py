@@ -1,4 +1,4 @@
-from collections import Callable
+from typing import Callable
 
 import rx
 from rx import operators as ops, Observable
@@ -11,7 +11,7 @@ def create_dht22_epic(get_data) -> Callable[[Observable], Observable]:
     def dht22_epic(action: Observable) -> Observable:
         return action.pipe(
             ops.filter(lambda a: a.type == MEASURE_TEMPERATURE or a.type == MEASURE_HUMIDITY),
-            ops.map(lambda a: get_data()),
+            ops.map(get_data),
             ops.flat_map(lambda data: rx.of(set_temperature(data[1]), set_humidity(data[0])))
         )
 
