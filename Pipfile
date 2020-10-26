@@ -9,6 +9,7 @@ verify_ssl = true
 rx = "*"
 pyyaml = "*"
 adafruit-dht = "*"
+"rpi.gpio" = "*"
 
 [requires]
-python_version = "3.8"
+python_version = "3.9"
